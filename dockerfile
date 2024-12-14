@@ -6,7 +6,7 @@
 #    By: kaara <kaara@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 11:22:02 by kaara             #+#    #+#              #
-#    Updated: 2024/12/14 20:37:23 by kaara            ###   ########.fr        #
+#    Updated: 2024/12/14 23:02:43 by kaara            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,29 +21,29 @@ ARG BRANCH_NAME=master
 
 # パッケージの更新と必要なツールのインストール
 RUN apt-get update -y && apt-get upgrade -y && \
-    apt-get install -y \
-        gcc \
-        g++ \
-        clang \
-        valgrind \
-        git \
-        curl \
-        make \
-        ssh \
-        python3-pip \
-        python3-venv \
-        build-essential \
-        dos2unix \
-    && pip3 install norminette==$NORM_VERSION \
-    && apt-get purge -y \
-        curl \
-        python3-pip \
-        python3-venv \
-    && apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/* \
-    && git config --global user.name "kaara" \
-    && git config --global user.email "arakan0613@icloud.com"
+	apt-get install -y \
+		gcc \
+		g++ \
+		clang \
+		valgrind \
+		git \
+		curl \
+		make \
+		ssh \
+		python3-pip \
+		python3-venv \
+		build-essential \
+		dos2unix \
+	&& pip3 install norminette==$NORM_VERSION \
+	&& apt-get purge -y \
+		curl \
+		python3-pip \
+		python3-venv \
+	&& apt-get autoremove -y \
+	&& apt-get clean -y \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& git config --global user.name "kaara" \
+	&& git config --global user.email "arakan0613@icloud.com"
 
 # 作業ディレクトリを設定
 WORKDIR /Desktop
