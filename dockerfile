@@ -6,7 +6,7 @@
 #    By: kaara <kaara@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 11:22:02 by kaara             #+#    #+#              #
-#    Updated: 2024/12/14 23:02:43 by kaara            ###   ########.fr        #
+#    Updated: 2024/12/15 12:17:00 by kaara            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,12 @@ RUN apt-get update -y && apt-get upgrade -y && \
 		python3-venv \
 		build-essential \
 		dos2unix \
+		libx11-dev \
+		libxext-dev \
+		libxrandr-dev \
+		libxi-dev \
 	&& pip3 install norminette==$NORM_VERSION \
+	&& bash -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)" \
 	&& apt-get purge -y \
 		curl \
 		python3-pip \
@@ -42,11 +47,11 @@ RUN apt-get update -y && apt-get upgrade -y && \
 	&& apt-get autoremove -y \
 	&& apt-get clean -y \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& git config --global user.name "kaara" \
+	&& git config --global user.name "kaara" \ 
 	&& git config --global user.email "arakan0613@icloud.com"
 
 # 作業ディレクトリを設定
-WORKDIR /Desktop
+WORKDIR /WORKDIR
 
 # 必要に応じてファイルの改行コード変換を行い、最後にdos2unixを削除
 
