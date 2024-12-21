@@ -6,10 +6,9 @@
 #    By: kaara <kaara@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 11:22:02 by kaara             #+#    #+#              #
-#    Updated: 2024/12/15 00:04:54 by kaara            ###   ########.fr        #
+#    Updated: 2024/12/21 20:33:58 by kaara            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 FROM --platform=linux/amd64 ubuntu:22.04
 
@@ -23,23 +22,23 @@ ARG BRANCH_NAME=master
 # パッケージの更新と必要なツールのインストール
 RUN apt-get update -y && apt-get upgrade -y && \
 	apt-get install -y \
-		gcc \
-		g++ \
+		build-essential \
 		clang \
 		valgrind \
+		lldb \
 		git \
 		curl \
-		make \
 		ssh \
 		python3-pip \
 		python3-venv \
-		build-essential \
 		dos2unix \
 		libx11-dev \
 		libxext-dev \
 		libxrandr-dev \
 		libxi-dev \
+		x11-apps \
 	&& pip3 install norminette==$NORM_VERSION \
+	&& bash -c "$(curl -fsSL https://raw.github.com/xicodomingues/francinette/master/bin/install.sh)" \
 	&& apt-get purge -y \
 		curl \
 		python3-pip \
